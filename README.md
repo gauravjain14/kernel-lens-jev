@@ -25,6 +25,40 @@ The kernel lens has **24 classification dimensions** informed by Nsight Compute 
 
 Each insight includes **evidence, confidence, and one next check**. Missing evidence stays unknown. These are static classifications; runtime impact is unmeasured unless measurements are supplied.
 
+<details>
+<summary>Example JSON request sent to JEV</summary>
+
+Sent to `POST https://ai-gateway.vercel.sh/v1/evaluate`. This excerpt shows one question; additional source metadata, helper/operation context, hardware details, and other questions are omitted.
+
+```json
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "current": {
+      "file": "sum32.cu",
+      "code": "L1: __global__ void sum32(float* x) {\nL2:   if (threadIdx.x == 0) {\nL3:     float sum = 0;\nL4:     for (int i = 0; i < 32; ++i) sum += x[i];\nL5:     x[0] = sum;\nL6:   }\nL7: }"
+    },
+    "targetHardware": "Assume B200."
+  },
+  "questions": {
+    "review.cuda-reduction": {
+      "type": "choice",
+      "instructions": "Classify Reduction organization independently. Classify reduction organization, including warp shuffle, shared tree and narrow serial tail. Matrix compute is not automatically a scalar reduction loop. Use the full function and resolved helper instructions. Select unknown for missing relationships/configuration; not_applicable for absent work. Relevant lines: 4.",
+      "criteria": {
+        "unknown": "The distinguishing source relationship or required configuration is unavailable.",
+        "not_applicable": "This execution path does not contain work relevant to this axis.",
+        "tree": "A halving/shared or recognized block reduction distributes the reduction across threads.",
+        "serial": "A single lane or narrow branch sums multiple elements serially."
+      }
+    }
+  }
+}
+```
+
+`state` supplies the evidence. `questions` defines what to classify, and `criteria` defines the allowed answers. JEV returns a selected `choice` and `probabilities` for each question; Kernel Lens maps the result to an insight and next check.
+
+</details>
+
 [All classification criteria](src/core/systems/kernel-review.ts) · [Framework coverage](docs/SYSTEMS-COVERAGE.md)
 
 ## Build and install locally
