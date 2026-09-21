@@ -1,0 +1,15 @@
+src/**
+test/**
+scripts/**
+node_modules/**
+artifacts/**
+.github/**
+.vscode/**
+.env*
+.gitignore
+.vscodeignore
+tsconfig.json
+package-lock.json
+dist/*.map
+dist/host-tests.cjs
+media/preview*

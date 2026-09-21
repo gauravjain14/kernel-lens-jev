@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src __CSP__; script-src 'nonce-__NONCE__';">
+<link rel="stylesheet" href="__STYLE__"><title>Kernel Lens</title></head>
+<body><main>
+  <header class="masthead"><div class="wordmark"><span class="lens-mark" aria-hidden="true">⊙</span> KERNEL <strong>LENS</strong></div><button id="settings" class="icon-button" aria-label="Open Kernel Lens settings">⚙</button></header>
+  <div id="preview-label" class="preview-label" hidden>INTERFACE PREVIEW · SAMPLE DATA</div>
+  <div class="status-row"><span id="status" class="status"><span class="dot"></span><span id="status-text">WATCHING</span></span><span id="version" class="provider"></span></div>
+  <p id="message" class="status-message" role="status" aria-live="polite"></p>
+  <section id="onboarding" class="onboarding" hidden>
+    <p class="eyebrow">CODE INSIGHTS</p><h1>Keep writing.<br>Catch the risk.</h1>
+    <p class="intro">See structural performance risks, exact source evidence and one next check while you code.</p>
+    <div class="disciplines"><span>CUDA</span><span>PYTORCH / JAX</span><span>SERVING</span></div>
+    <button id="enable" class="primary full">Connect live insights <span aria-hidden="true">↗</span></button>
+    <p class="disclosure">Uses your AI Gateway key. After workspace setup, assessments run automatically. Astra reviews are on demand by default.</p>
+  </section>
+  <section id="workspace">
+    <div class="toolbar"><label class="sr-only" for="domain">Assessment profile</label><select id="domain"><option value="auto">Auto · Systems lenses</option><option value="cuda">CUDA</option><option value="triton">Triton</option><option value="pytorch">PyTorch tensors</option><option value="jax">JAX</option><option value="distributed">Distributed</option><option value="serving">Serving</option><option value="training">Training</option><option value="inference">Inference</option><option value="data">Input pipeline</option><option value="general">General code</option></select><button id="analyze" class="text-button">↻ Analyze</button></div>
+    <div class="hardware-picker"><label for="hardware">Assuming</label><select id="hardware"><option value="b200">B200 · 180GB</option><option value="h100">H100 SXM · 80GB</option><option value="a100">A100 SXM · 80GB</option><option value="unspecified">Unspecified / custom</option></select></div>
+    <p id="hardware-ceiling" class="subtle"></p>
+    <div class="file-context"><span class="file-glyph" aria-hidden="true">⌘</span><span id="file-name">Open a source file</span><span id="line-range" class="mono"></span></div>
+    <div id="activity" class="activity" hidden><div class="scan-line"></div><p id="activity-label">Jev is assessing this block.</p></div>
+    <section id="profile" class="profile" hidden aria-label="Jev assessment profile">
+      <div class="profile-top"><span id="route" class="route-label"></span><span class="section-label">INSIGHTS</span></div>
+      <h2 id="unit-name" class="unit-name"></h2>
+      <div id="revision-note" class="revision-note" hidden>Previous edit · updating</div>
+      <div id="improvements" class="improvements" aria-live="polite"></div>
+      <div id="physics-estimates" class="physics-estimates"></div>
+      <div id="lens-summary" class="lens-summary" aria-label="Performance lens"></div>
+      <details id="unresolved-dimensions" class="disclosure-panel" hidden><summary>Not established from source</summary><div id="unresolved-items"></div><p class="subtle">No supported prediction for these dimensions. Shapes, launch configuration, compiler output or a trace may resolve them.</p></details>
+      <div id="findings" class="findings" aria-label="Current code insights"></div>
+      <details id="more-findings" class="disclosure-panel" hidden><summary id="more-label">Other findings</summary><div id="other-findings"></div></details>
+      <div id="quiet-state" class="quiet-state" hidden></div>
+      <details id="positive-findings" class="disclosure-panel" hidden><summary id="positive-label">Observed good structure</summary><div id="positive-items"></div></details>
+      <details id="assumption-findings" class="disclosure-panel" hidden><summary>Execution assumptions</summary><p class="subtle">These conditions are separate from the performance assessment.</p><div id="assumption-items"></div></details>
+      <details id="unknown-findings" class="disclosure-panel" hidden><summary>Open questions & supplied evidence</summary><div id="unknown-items"></div></details>
+      <p id="profile-note" class="subtle prediction-note">Static execution review · runtime impact is unmeasured unless supplied.</p>
+    </section>
+    <details id="technical" class="disclosure-panel"><summary>Assessment details</summary>
+      <div class="profile-totals"><span><b id="concern-total">0</b> concerns</span><span><b id="supported-total">0</b> supported</span><span><b id="unknown-total">0</b> uncertain</span></div>
+      <div id="changes" class="changes"></div><div id="assessments" class="assessment-list"></div>
+      <div id="report-meta" class="report-meta"></div>
+      <p id="coverage-note" class="subtle"></p>
+    </details>
+    <section id="advisor" class="advisor" hidden aria-label="Generated review">
+      <div class="section-heading"><h2 id="advisor-heading">Astra review</h2><span class="section-label">WHEN NEEDED</span></div>
+      <p id="advisor-message" class="subtle" role="status"></p>
+      <div class="advisor-actions"><button id="review" class="primary">Review this block ↗</button><button id="handoff" class="text-button">Copy for coding agent</button></div>
+      <p id="review-summary" class="review-summary" hidden></p><div id="advice-items"></div>
+      <p class="disclosure">Generated reviews use your selected model at its API rate. Jev continues independently.</p>
+    </section>
+    <div class="session-actions"><button id="pause" class="text-button">Ⅱ Pause</button><button id="key" class="text-button">Update API key</button></div>
+  </section>
+  <details id="context-details" class="context-details"><summary><span>Context & contracts</span><span aria-hidden="true">＋</span></summary>
+    <p id="context-budget" class="subtle"></p><div id="auto-context"></div>
+    <button id="importEvidence" class="text-button">+ Shapes, compiler or runtime evidence</button>
+    <form id="intent-form"><label for="intent">Anything outside the visible code?</label><textarea id="intent" maxlength="1600" rows="3" placeholder="Optional: target GPU, shapes, accumulation policy, numerical tolerance."></textarea><div class="intent-actions"><span id="intent-status">Relevant setup and helpers are included automatically.</span><button type="submit" class="small-button">Save context</button></div></form>
+    <div class="reference-heading"><span class="section-label">EXTRA REFERENCES</span><button id="attach" class="text-button">+ Selection</button></div><div id="references"></div>
+  </details>
+  <footer><span class="footer-mark" aria-hidden="true">⊙</span><span>Jev watches. You decide.</span><span id="session-count" class="mono">0 calls</span></footer>
+</main><script nonce="__NONCE__" src="__SCRIPT__"></script></body></html>

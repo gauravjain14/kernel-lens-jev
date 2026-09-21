@@ -1,0 +1,309 @@
+{
+  "name": "kernel-lens",
+  "displayName": "Kernel Lens",
+  "description": "Live, evidence-backed systems-performance insights for CUDA, Triton, PyTorch, JAX, vLLM and SGLang.",
+  "version": "0.7.0",
+  "publisher": "kernel-lens-local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.98.0",
+    "node": ">=20"
+  },
+  "categories": [
+    "Machine Learning",
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "cuda",
+    "triton",
+    "pytorch",
+    "inference",
+    "training",
+    "jev",
+    "jax",
+    "vllm",
+    "sglang",
+    "distributed"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.cjs",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "Kernel Lens needs a trusted workspace before sending selected source context to AI Gateway."
+    },
+    "virtualWorkspaces": {
+      "supported": false
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "kernelLens.open",
+        "title": "Open Insights",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.enable",
+        "title": "Enable Live Insights for This Workspace",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.pause",
+        "title": "Pause Live Insights",
+        "category": "Kernel Lens",
+        "icon": "$(debug-pause)"
+      },
+      {
+        "command": "kernelLens.analyze",
+        "title": "Analyze Current Code",
+        "category": "Kernel Lens",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "kernelLens.setKey",
+        "title": "Set AI Gateway API Key",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.testConnection",
+        "title": "Test AI Gateway Connection",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.clearKey",
+        "title": "Remove Stored API Key",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.setIntent",
+        "title": "Set Task Intent",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.attach",
+        "title": "Attach Selection as Context",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.enableJev",
+        "title": "Connect Jev Live Assessments",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.disableJev",
+        "title": "Pause Jev Assessments",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.review",
+        "title": "Review Current Block with Astra",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.copyHandoff",
+        "title": "Copy Code and Assessments for Coding Agent",
+        "category": "Kernel Lens"
+      },
+      {
+        "command": "kernelLens.importEvidence",
+        "title": "Attach Performance Evidence (JSON)",
+        "category": "Kernel Lens"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "kernelLens",
+          "title": "Kernel Lens",
+          "icon": "media/lens.svg"
+        }
+      ]
+    },
+    "views": {
+      "kernelLens": [
+        {
+          "id": "kernelLens.insights",
+          "name": "Live Insights",
+          "type": "webview"
+        }
+      ]
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "kernelLens.attach",
+          "when": "editorHasSelection",
+          "group": "kernelLens"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "kernelLens.analyze",
+          "when": "view == kernelLens.insights",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Kernel Lens",
+      "properties": {
+        "kernelLens.domain": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "cuda",
+            "triton",
+            "pytorch",
+            "jax",
+            "distributed",
+            "serving",
+            "training",
+            "inference",
+            "data",
+            "general"
+          ],
+          "default": "auto",
+          "description": "Auto evaluates recognized frameworks. Select a lens to restrict the findings; unknown framework semantics remain unassessed."
+        },
+        "kernelLens.debounceMs": {
+          "type": "number",
+          "default": 700,
+          "minimum": 300,
+          "maximum": 10000,
+          "description": "Typing pause before assessing a complete block with Jev."
+        },
+        "kernelLens.maxRequestsPerMinute": {
+          "type": "number",
+          "default": 30,
+          "minimum": 2,
+          "maximum": 120,
+          "description": "Rolling limit for bounded Jev assessments. Source-only observations and unchanged context do not require model calls."
+        },
+        "kernelLens.maxContextCharacters": {
+          "type": "number",
+          "default": 16000,
+          "minimum": 4000,
+          "maximum": 40000,
+          "description": "Total character budget for the current block, enclosing function, setup, references and optional contracts."
+        },
+        "kernelLens.minimumProbability": {
+          "type": "number",
+          "default": 0.75,
+          "minimum": 0.6,
+          "maximum": 0.99,
+          "description": "Jev outcomes below this probability remain unknown. Structural confidence is derived separately from evidence strength."
+        },
+        "kernelLens.showInline": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a short insight beside the most relevant source line."
+        },
+        "kernelLens.showDiagnostics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show evidence-backed performance findings and syntax-readiness markers in Problems."
+        },
+        "kernelLens.zeroDataRetention": {
+          "type": "boolean",
+          "default": false,
+          "description": "Require zero-data-retention routing through AI Gateway. Vercel requires a Pro or Enterprise plan for this option. When off, your account and provider policies apply. Kernel Lens never retries with weaker retention settings."
+        },
+        "kernelLens.excludedPaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "secrets",
+            "credentials",
+            "private"
+          ],
+          "description": "Additional path fragments to exclude from source context. .env, key files, dependency folders, and VCS folders are always excluded."
+        },
+        "kernelLens.useJev": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run live Jev assessments with the configured key and existing workspace permission."
+        },
+        "kernelLens.hardware": {
+          "type": "string",
+          "default": "",
+          "maxLength": 600,
+          "description": "Optional hardware, launch and shape context. Select Unspecified in the hardware picker when using a device outside the built-in profiles."
+        },
+        "kernelLens.advisor.mode": {
+          "type": "string",
+          "enum": [
+            "onDemand",
+            "auto",
+            "off"
+          ],
+          "default": "onDemand",
+          "description": "On demand: review only when clicked. Auto: review newly detected strong concerns within a separate request budget. Reviews are billed at the selected model API rate."
+        },
+        "kernelLens.advisor.model": {
+          "type": "string",
+          "default": "openai/gpt-6-astra",
+          "description": "AI Gateway model ID for generated reviews. Jev classification always uses typesafe-ai/jev."
+        },
+        "kernelLens.advisor.maxRequestsPerMinute": {
+          "type": "number",
+          "default": 2,
+          "minimum": 1,
+          "maximum": 6,
+          "description": "Separate rolling limit for generated reviews. At least 15 seconds between review requests."
+        },
+        "kernelLens.hardwareProfile": {
+          "type": "string",
+          "enum": [
+            "b200",
+            "h100",
+            "a100",
+            "unspecified"
+          ],
+          "default": "b200",
+          "description": "Assumed per-GPU hardware for performance predictions. Published SXM ceilings, never runtime measurements. Change in the sidebar."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "test:host": "node scripts/test-host.mjs",
+    "test:ui": "python test/webview_test.py",
+    "check": "npm run typecheck && npm test && npm run build",
+    "vscode:prepublish": "npm run build",
+    "package": "vsce package --no-dependencies --allow-missing-repository --no-rewrite-relative-links --out artifacts/kernel-lens-0.7.0.vsix",
+    "preview": "node --import tsx scripts/prepare-systems-preview.ts && node scripts/preview.mjs",
+    "eval:live": "node --import tsx scripts/evaluate-systems.ts",
+    "gateway:check": "node --import tsx scripts/check-gateway.ts",
+    "bench": "node --import tsx scripts/benchmark.ts",
+    "test:package": "npm run test:host -- --vsix artifacts/kernel-lens-0.7.0.vsix",
+    "eval:legacy": "node --import tsx scripts/evaluate-assessment.ts",
+    "eval:release": "node --import tsx scripts/evaluate-release.ts",
+    "eval:kernels": "node --import tsx scripts/evaluate-kernels.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "1.98.0",
+    "@vscode/vsce": "^3.2.2",
+    "esbuild": "^0.25.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  },
+  "dependencies": {
+    "@lezer/common": "^1.5.2",
+    "@lezer/cpp": "^1.1.6",
+    "@lezer/python": "^1.1.19"
+  }
+}
