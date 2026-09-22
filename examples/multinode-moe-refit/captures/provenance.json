@@ -1,0 +1,159 @@
+{
+  "upstreamPullRequest": "https://github.com/verl-project/verl/pull/6612",
+  "protocol": "Original response recorded before fetching the merged implementation. Same production engine, threshold, deployment facts, neutral transformer_impl.py name, get_per_tensor_param assessment unit, and imported-handler reference policy. No expected classifications, optimization prose, benchmark results, other variant, or previous answers supplied.",
+  "engine": {
+    "commit": "ba6f5c739f70bd20f3ef077053368348770924dc",
+    "filesSha256": {
+      "src/core/advisor.ts": "bedba73c6986c4e32196dbb40a1a217cc4fc4156a87cab53f24f59b86975b548",
+      "src/core/anchors.ts": "30ea9a3ef8ef3ec13412eb895d98266677eebdbccece124d95fcb325e9b023b7",
+      "src/core/assessment.ts": "01391373a38c1f54608060aa91177c9d0e4dce0575888251dcd5778d657b91d0",
+      "src/core/blocks.ts": "47a3497792fc157c17fcf18de70dea4cf40fe7d99a4bee6a6990fb61fbf1261e",
+      "src/core/connection.ts": "a435fce9d3f233eef704aa23277e3ee09999b9130c5006c0cdf3fab98d265026",
+      "src/core/context.ts": "17875f0b8cf5e3fcdc47fa7a396ae7a8ebbcf62281f1c2946c4ecddf54cc502c",
+      "src/core/gateway.ts": "ad476664046aaaf0627284793e11f6b90eec8ddb41064762011a4e53b3872973",
+      "src/core/guidance.ts": "cee2766cd5c3042c09dfae93a668124f503703b764909cb49dfb3bae00803a42",
+      "src/core/presentation.ts": "1b674b6932759246ab601e10b5da4a74b4dcf00b2b6c04bbb577a6543bfd7d02",
+      "src/core/rubrics.ts": "6c02948b140edd55585da8d1a08b675761e1e26055d55c4356f0d6f49a0320ce",
+      "src/core/scheduling.ts": "efaa31f60b9655dd9cc4c4c751b4c551049c68a0721713701310869edb140f13",
+      "src/core/syntax.ts": "a4a2f7074a632b034fd01e7b7e09c4d50467a43b5d6a1530a88c9d99ee73e976",
+      "src/core/systems/analyze.ts": "7f9dab0889db88ff1fdaac8b5ddee9a30f6243eec1886a106b31a1287350349f",
+      "src/core/systems/cuda-semantics.ts": "8f3954229a55d0b9f62cb880da00960d99976fffe1b0e116e33eca17260a8e12",
+      "src/core/systems/cuda.ts": "da76a91f6594d226b97f087acd2e89e8764cac2e9e67065ba5d3fb5336f8cf74",
+      "src/core/systems/enrichment.ts": "c169a88dd1a7d0d95db5674505c0c404405bc3d317a621abba2d24c70e75fe3e",
+      "src/core/systems/evaluate.ts": "4766c118a693a4c9ff735069e6f0ae784f7673e56dac0bed1458fb7225190382",
+      "src/core/systems/gate.ts": "30cf890f0bd9dcacc826187cb2cba58656f4ac4c1b2873e609cca1aaec9ed501",
+      "src/core/systems/hardware.ts": "b29eca7bb0a6ab938e161692154446a288081cde863c2a7f8dec5e4ce95c0338",
+      "src/core/systems/kernel-review.ts": "988c8f25338d0900103c356f5bfbeff7607d860073ab6d6b5615d7c0fdbeedd9",
+      "src/core/systems/lenses.ts": "89dcdb2574a7fbee26b3297d4fcae7ca2e9ab41d18dd5dc3eef4fbc39cf6d9c8",
+      "src/core/systems/python.ts": "c6a3aeae82dc0a985e84c8993ffb2706a34730d28304f7138b552bf42d529cc0",
+      "src/core/systems/review.ts": "96f2e5bb73ca53452f7f4e139af956475c3bfb8125456ded7d0803466a6562f3",
+      "src/core/systems/semantics.ts": "6b50383f9d2116c8e9d2500eb6544ccd284d26af23813b72d59c5f8ecb20670d",
+      "src/core/systems/source.ts": "31a337bfde219bdd884522d8f6cf6326b533f0bb6da1dd8f3c1cb7ea4e43fbd7",
+      "src/core/systems/types.ts": "2fe88387bb87d4ae9680a5a8f6a9fb7d70fe03c1a8db15bfc2ca26510eff6069",
+      "src/editor-context.ts": "ade283f77fae14a87e2bcd6695e5f814572a2a3a4e0b1b8a28cf3f60e28e1aac",
+      "src/extension.ts": "bef689c9ed87777b1784a108fafedd5a2e113273bca59b9b3bea2db60b618caf",
+      "src/live-types.ts": "48b0db09861dd44fdbeb26c2ae1c0028729b1fc19162952d0c03b99790af3be8",
+      "src/webview.ts": "f3b06d6622e5b946cb3ff33f469b58d1755965d554aa27c45a0d419a36d33db6"
+    }
+  },
+  "settings": {
+    "threshold": 0.75,
+    "hardwareProfile": "h100",
+    "hardware": "Deployment scenario: the expert-parallel process group spans two nodes, with eight NVIDIA H100 SXM GPUs per node and 16 EP ranks total. Expert parameters use bfloat16. Tensor dimensions, interconnect bandwidth and runtime measurements are not supplied. Other parallelism groups are unspecified.",
+    "assessmentScope": "function"
+  },
+  "deployment": "Supplied two-node EP=16 scenario; not a measured upstream deployment.",
+  "trainingExecuted": false,
+  "runtimeImpactMeasured": false,
+  "responseExport": "All model answers and token usage retained; HTTP headers, provider routing and generation identifiers omitted.",
+  "variants": {
+    "before": {
+      "upstream": {
+        "repository": "https://github.com/verl-project/verl",
+        "revision": "381ed247f3aa308710d5dcbea146215491ee5b9b",
+        "files": {
+          "verl/workers/engine/veomni/transformer_impl.py": "44c1e1d89d3ba0ebe6e30e41300846260259cfc671fdd07eefba6111c6422c8d",
+          "verl/workers/engine/veomni/utils.py": "5cb15958f4fd7443613ca14e10cac33714938220db0cec958b2191514b16088d"
+        }
+      },
+      "frozenAt": "2026-09-22T07:50:25.685Z",
+      "context": {
+        "file": "transformer_impl.py",
+        "unit": "get_per_tensor_param",
+        "startLine": 646,
+        "endLine": 684,
+        "truncated": true,
+        "references": [
+          {
+            "name": "MOE_PARAM_HANDERS",
+            "startLine": 111,
+            "characters": 349
+          },
+          {
+            "name": "__init__",
+            "startLine": 89,
+            "characters": 1800
+          }
+        ]
+      },
+      "failedAttempts": [
+        {
+          "startedAt": "2026-09-22T07:52:29.082Z",
+          "completedAt": "2026-09-22T07:52:29.946Z",
+          "status": 503
+        }
+      ],
+      "status": "captured",
+      "requestStartedAt": "2026-09-22T07:59:10.632Z",
+      "responseSavedAt": "2026-09-22T07:59:11.512Z",
+      "usage": {
+        "latencyMs": 876,
+        "inputTokens": 14081,
+        "outputTokens": 2131,
+        "cost": 0
+      },
+      "sha256": {
+        "before.py": "44c1e1d89d3ba0ebe6e30e41300846260259cfc671fdd07eefba6111c6422c8d",
+        "before_utils.py": "5cb15958f4fd7443613ca14e10cac33714938220db0cec958b2191514b16088d",
+        "captures/before.request.json": "5847c3059659afdc580bda4b5b23b7ee837de4b13de9049c242d62af738d6933",
+        "captures/before.response.json": "c7c3818eca8222ec6e30ac5ce83e25f69c25526cf885362c4b6d5698e103c4de",
+        "captures/before.report.json": "8642577650345ca494437c1c809fafac6c39552b43657b96cdadeb52c9e1cd92"
+      }
+    },
+    "after": {
+      "upstream": {
+        "repository": "https://github.com/verl-project/verl",
+        "revision": "c2d93fc258f9de0effd761daaf93d7427961a675",
+        "files": {
+          "verl/workers/engine/veomni/transformer_impl.py": "4bdcdeefa301980c5b0642404b8ed4378615d43a6fb716efa1abaa8d2be4b574",
+          "verl/workers/engine/veomni/utils.py": "d11eff9962d8c9358c2bb67bb16255655b861ad3aabe468bedf118d93346f36e"
+        }
+      },
+      "frozenAt": "2026-09-22T08:01:19.487Z",
+      "context": {
+        "file": "transformer_impl.py",
+        "unit": "get_per_tensor_param",
+        "startLine": 646,
+        "endLine": 681,
+        "truncated": true,
+        "references": [
+          {
+            "name": "MOE_PARAM_HANDERS",
+            "startLine": 111,
+            "characters": 914
+          },
+          {
+            "name": "__init__",
+            "startLine": 89,
+            "characters": 1800
+          }
+        ]
+      },
+      "failedAttempts": [
+        {
+          "startedAt": "2026-09-22T08:03:48.313Z",
+          "completedAt": "2026-09-22T08:03:49.046Z",
+          "status": 503
+        },
+        {
+          "startedAt": "2026-09-22T08:03:49.194Z",
+          "completedAt": "2026-09-22T08:03:49.664Z",
+          "status": 503
+        },
+        {
+          "startedAt": "2026-09-22T08:05:26.959Z",
+          "completedAt": "2026-09-22T08:05:27.564Z",
+          "status": 503
+        }
+      ],
+      "status": "gateway_unavailable",
+      "httpStatus": 503,
+      "responseSavedAt": null,
+      "sha256": {
+        "after.py": "4bdcdeefa301980c5b0642404b8ed4378615d43a6fb716efa1abaa8d2be4b574",
+        "after_utils.py": "d11eff9962d8c9358c2bb67bb16255655b861ad3aabe468bedf118d93346f36e",
+        "captures/after.request.json": "ce6c5e6dc9a8c4393bd8ee6209679b03ad03652b5a95378fa046c6b0d0de3444"
+      }
+    }
+  }
+}

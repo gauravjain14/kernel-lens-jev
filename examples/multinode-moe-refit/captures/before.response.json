@@ -1,0 +1,343 @@
+{
+  "model": "typesafe-ai/jev",
+  "answers": {
+    "review.train-loader": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0.01,
+        "good_E3": 0,
+        "good_E1": 0,
+        "issue_E3": 0,
+        "good_E0": 0,
+        "not_applicable": 0.96,
+        "issue_E1": 0,
+        "unknown": 0.03,
+        "issue_E2": 0,
+        "issue_E0": 0
+      },
+      "confidence": 0.95
+    },
+    "review.train-host-sync": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0.02,
+        "good_E3": 0.01,
+        "good_E1": 0.02,
+        "issue_E3": 0,
+        "good_E0": 0.06,
+        "not_applicable": 0.84,
+        "issue_E1": 0,
+        "unknown": 0.05,
+        "issue_E2": 0,
+        "issue_E0": 0
+      },
+      "confidence": 0.81
+    },
+    "review.train-retention": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "issue_E3": 0,
+        "good_E0": 0,
+        "not_applicable": 0.98,
+        "issue_E1": 0,
+        "unknown": 0.02,
+        "issue_E2": 0,
+        "issue_E0": 0
+      },
+      "confidence": 0.98
+    },
+    "review.train-ddp-accum": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "issue_E3": 0,
+        "good_E0": 0,
+        "not_applicable": 0.95,
+        "issue_E1": 0,
+        "unknown": 0.05,
+        "issue_E2": 0,
+        "issue_E0": 0
+      },
+      "confidence": 0.94
+    },
+    "review.infer-grad": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "issue_E2": 0.01,
+        "good_E0": 0,
+        "not_applicable": 0.51,
+        "issue_E1": 0.01,
+        "unknown": 0.42,
+        "issue_E3": 0,
+        "issue_E0": 0.05
+      },
+      "confidence": 0.46
+    },
+    "review.infer-transfers": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0.16,
+        "good_E3": 0.01,
+        "good_E1": 0.1,
+        "issue_E3": 0.01,
+        "good_E0": 0.09,
+        "not_applicable": 0.45999999999999996,
+        "issue_E1": 0.01,
+        "unknown": 0.14,
+        "issue_E2": 0.01,
+        "issue_E0": 0.01
+      },
+      "confidence": 0.42
+    },
+    "review.infer-cache": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0.01,
+        "good_E3": 0,
+        "good_E1": 0.1,
+        "issue_E3": 0,
+        "good_E0": 0.01,
+        "not_applicable": 0.86,
+        "issue_E1": 0.01,
+        "unknown": 0.01,
+        "issue_E2": 0,
+        "issue_E0": 0
+      },
+      "confidence": 0.84
+    },
+    "review.infer-attention": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "issue_E3": 0,
+        "good_E0": 0,
+        "issue_E2": 0,
+        "issue_E1": 0,
+        "unknown": 0.03,
+        "not_applicable": 0.97,
+        "issue_E0": 0
+      },
+      "confidence": 0.97
+    },
+    "review.infer-kv-cache": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "not_applicable": 0.98,
+        "good_E0": 0,
+        "issue_E2": 0,
+        "issue_E1": 0,
+        "unknown": 0.02,
+        "issue_E3": 0,
+        "issue_E0": 0
+      },
+      "confidence": 0.98
+    },
+    "review.infer-setup": {
+      "type": "choice",
+      "choice": "unknown",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0.08,
+        "good_E1": 0.01,
+        "not_applicable": 0.14,
+        "good_E0": 0.02,
+        "issue_E2": 0,
+        "issue_E1": 0.01,
+        "unknown": 0.39,
+        "issue_E3": 0.34,
+        "issue_E0": 0.01
+      },
+      "confidence": 0.33
+    },
+    "review.infer-retention": {
+      "type": "choice",
+      "choice": "good_E0",
+      "probabilities": {
+        "good_E2": 0.02,
+        "good_E3": 0,
+        "good_E1": 0.09,
+        "issue_E3": 0,
+        "good_E0": 0.43,
+        "not_applicable": 0.36,
+        "issue_E1": 0.02,
+        "unknown": 0.05,
+        "issue_E2": 0,
+        "issue_E0": 0.03
+      },
+      "confidence": 0.36
+    },
+    "review.tensor-transfer": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "not_applicable": 0.88,
+        "good_E0": 0,
+        "issue_E2": 0.02,
+        "issue_E1": 0.01,
+        "unknown": 0.09,
+        "issue_E3": 0,
+        "issue_E0": 0
+      },
+      "confidence": 0.86
+    },
+    "review.tensor-batching": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0.31,
+        "good_E3": 0,
+        "good_E1": 0.03,
+        "issue_E2": 0.02,
+        "good_E0": 0.09,
+        "issue_E3": 0,
+        "issue_E1": 0.01,
+        "unknown": 0.05,
+        "not_applicable": 0.39999999999999997,
+        "issue_E0": 0.09
+      },
+      "confidence": 0.34
+    },
+    "review.tensor-allocator": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0.02,
+        "issue_E2": 0,
+        "good_E0": 0.02,
+        "issue_E3": 0,
+        "issue_E1": 0,
+        "unknown": 0.06,
+        "not_applicable": 0.9,
+        "issue_E0": 0
+      },
+      "confidence": 0.88
+    },
+    "review.tensor-compile": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "not_applicable": 0.92,
+        "good_E0": 0,
+        "issue_E2": 0,
+        "issue_E1": 0,
+        "unknown": 0.03,
+        "issue_E3": 0,
+        "issue_E0": 0.05
+      },
+      "confidence": 0.9
+    },
+    "review.tensor-layout": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0.01,
+        "good_E3": 0,
+        "good_E1": 0.03,
+        "issue_E3": 0,
+        "good_E0": 0.02,
+        "not_applicable": 0.93,
+        "issue_E1": 0,
+        "unknown": 0.01,
+        "issue_E2": 0,
+        "issue_E0": 0
+      },
+      "confidence": 0.92
+    },
+    "review.data-preprocess": {
+      "type": "choice",
+      "choice": "not_applicable",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "issue_E3": 0,
+        "good_E0": 0,
+        "not_applicable": 0.98,
+        "issue_E1": 0,
+        "unknown": 0.02,
+        "issue_E2": 0,
+        "issue_E0": 0
+      },
+      "confidence": 0.97
+    },
+    "review.distributed-path": {
+      "type": "choice",
+      "choice": "issue_E0",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "issue_E3": 0,
+        "good_E0": 0.01,
+        "issue_E2": 0,
+        "issue_E1": 0,
+        "unknown": 0.01,
+        "not_applicable": 0.01,
+        "issue_E0": 0.97
+      },
+      "confidence": 0.96
+    },
+    "review.distributed-layout": {
+      "type": "choice",
+      "choice": "issue_E0",
+      "probabilities": {
+        "good_E2": 0,
+        "good_E3": 0,
+        "good_E1": 0,
+        "issue_E3": 0,
+        "good_E0": 0.04,
+        "not_applicable": 0.01,
+        "issue_E1": 0,
+        "unknown": 0.12,
+        "issue_E2": 0,
+        "issue_E0": 0.8200000000000001
+      },
+      "confidence": 0.79
+    },
+    "distributed.all_gather:0": {
+      "type": "choice",
+      "choice": "retain",
+      "probabilities": {
+        "dismiss": 0.02,
+        "unknown": 0.01,
+        "likely": 0.15,
+        "retain": 0.82
+      },
+      "confidence": 0.76
+    }
+  },
+  "usage": {
+    "inputTokens": 14081,
+    "outputTokens": 2131
+  }
+}

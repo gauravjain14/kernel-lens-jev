@@ -5,6 +5,14 @@
   "version": "0.7.0",
   "publisher": "kernel-lens-local",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gauravjain14/kernel-lens-jev.git"
+  },
+  "homepage": "https://github.com/gauravjain14/kernel-lens-jev#readme",
+  "bugs": {
+    "url": "https://github.com/gauravjain14/kernel-lens-jev/issues"
+  },
   "engines": {
     "vscode": "^1.98.0",
     "node": ">=20"
@@ -283,7 +291,7 @@
     "test:ui": "python test/webview_test.py",
     "check": "npm run typecheck && npm test && npm run build",
     "vscode:prepublish": "npm run build",
-    "package": "vsce package --no-dependencies --allow-missing-repository --no-rewrite-relative-links --out artifacts/kernel-lens-0.7.0.vsix",
+    "package": "vsce package --no-dependencies --githubBranch main --out artifacts/kernel-lens-0.7.0.vsix",
     "preview": "node --import tsx scripts/prepare-systems-preview.ts && node scripts/preview.mjs",
     "eval:live": "node --import tsx scripts/evaluate-systems.ts",
     "gateway:check": "node --import tsx scripts/check-gateway.ts",

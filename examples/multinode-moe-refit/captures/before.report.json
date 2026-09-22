@@ -1,0 +1,334 @@
+{
+  "latencyMs": 876,
+  "inputTokens": 14081,
+  "outputTokens": 2131,
+  "cost": 0,
+  "route": {
+    "technology": "pytorch",
+    "activity": "graph",
+    "packs": [
+      "pytorch",
+      "distributed"
+    ],
+    "uncertain": false,
+    "probabilities": {
+      "technology": 1,
+      "activity": 1
+    }
+  },
+  "scope": {
+    "name": "get_per_tensor_param",
+    "startLine": 646,
+    "endLine": 684,
+    "identity": "class VeOmniEngine(FSDPEngine):get_per_tensor_param:function"
+  },
+  "hardware": {
+    "profile": {
+      "id": "h100",
+      "name": "H100 SXM 80GB",
+      "architecture": "Hopper",
+      "memoryGB": 80,
+      "bandwidthTBs": 3.35,
+      "fp32Tflops": 67,
+      "denseBf16Tflops": 989.5,
+      "denseTf32Tflops": 494.5,
+      "sources": [
+        "https://www.nvidia.com/en-us/data-center/h100/"
+      ]
+    },
+    "assumed": true,
+    "estimates": [],
+    "note": "Assumed per-GPU hardware; published ceilings, not achieved performance. Runtime impact is unmeasured."
+  },
+  "dimensions": [
+    {
+      "id": "review.train-loader",
+      "label": "Input pipeline",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.train-host-sync",
+      "label": "CPU/GPU synchronization",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.train-retention",
+      "label": "Autograd memory",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.train-ddp-accum",
+      "label": "Accumulation communication",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.infer-grad",
+      "label": "Autograd overhead",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.infer-transfers",
+      "label": "Host transfer overhead",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.infer-cache",
+      "label": "Cache & allocation growth",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.infer-attention",
+      "label": "Attention implementation",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.infer-kv-cache",
+      "label": "Decode work reuse",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.infer-setup",
+      "label": "Serving setup lifetime",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.infer-retention",
+      "label": "Serving memory lifetime",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.tensor-transfer",
+      "label": "Host-to-device submission",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.tensor-batching",
+      "label": "Tensor work batching",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.tensor-allocator",
+      "label": "Allocator reuse",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.tensor-compile",
+      "label": "Compiled graph continuity",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.tensor-layout",
+      "label": "Tensor layout",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.data-preprocess",
+      "label": "Preprocessing placement",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "unknown",
+      "findingIds": []
+    },
+    {
+      "id": "review.distributed-path",
+      "label": "Collective critical path",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "possible_issue",
+      "findingIds": [
+        "distributed.all_gather:0"
+      ]
+    },
+    {
+      "id": "review.distributed-layout",
+      "label": "Sharding transitions",
+      "metricFamily": "Nsight Systems / framework trace",
+      "assessment": "possible_issue",
+      "findingIds": [
+        "review.distributed-layout"
+      ]
+    }
+  ],
+  "fingerprint": "systems-1.2.0:c6ffd82bdf2cbc9cd1985fcbf0d4ceb63d3e9c6aea30d43fa56b3d13154a0be8",
+  "changes": [],
+  "findings": [
+    {
+      "id": "distributed.all_gather:0",
+      "title": "all gather inside a loop",
+      "scope": "distributed",
+      "category": "collective_placement",
+      "assessment": "possible_issue",
+      "confidence": "high",
+      "evidence": {
+        "source": "torch.distributed.all_gather_into_tensor(stacked_tensor, unsharded_tensor, group=ps.ep_group)",
+        "location": {
+          "file": "transformer_impl.py",
+          "startLine": 673,
+          "endLine": 673,
+          "startColumn": 20,
+          "endColumn": 113
+        },
+        "explanation": "The source invokes all gather inside a loop. Payload size and runtime communication cost are separate questions."
+      },
+      "evidence_ids": [
+        "e_806f598b7ab5",
+        "e_a1c30e879fcd"
+      ],
+      "impact": [
+        "communication",
+        "memory"
+      ],
+      "next_check": "Check collective placement and payload relative to useful compute at the expected shapes and rank count.",
+      "requires": [
+        "shapes"
+      ],
+      "runtime_impact_measured": false,
+      "evidence_level": 0,
+      "basis": "static",
+      "assumptions": [],
+      "section": "performance",
+      "model_probability": 0.82,
+      "model_choice": "retain",
+      "model_probabilities": {
+        "retain": 0.82,
+        "likely": 0.15,
+        "dismiss": 0.02,
+        "unknown": 0.01
+      },
+      "model_concern_probability": 0.97
+    },
+    {
+      "id": "review.distributed-layout",
+      "title": "Sharding transitions · inspect execution path",
+      "scope": "distributed",
+      "category": "sharding_transitions",
+      "assessment": "possible_issue",
+      "confidence": "medium",
+      "evidence": {
+        "source": "torch.distributed.all_gather_into_tensor(stacked_tensor, unsharded_tensor, group=ps.ep_group)",
+        "location": {
+          "file": "transformer_impl.py",
+          "startLine": 673,
+          "endLine": 673,
+          "startColumn": 20,
+          "endColumn": 113
+        },
+        "explanation": "Jev's source-based assessment: A gathered or replicated intermediate is materialized before a consumer that warrants a sharded-layout investigation."
+      },
+      "impact": [
+        "communication",
+        "latency"
+      ],
+      "next_check": "Check the consumer layout requirements and payload bytes before changing the parallelism strategy.",
+      "requires": [
+        "shapes"
+      ],
+      "runtime_impact_measured": false,
+      "evidence_ids": [
+        "e_9e20bf631655"
+      ],
+      "evidence_level": 0,
+      "basis": "inferred",
+      "assumptions": [],
+      "section": "performance",
+      "model_probability": 0.8200000000000001,
+      "model_choice": "issue_E0",
+      "model_probabilities": {
+        "unknown": 0.12,
+        "not_applicable": 0.01,
+        "issue_E0": 0.8200000000000001,
+        "good_E0": 0.04,
+        "issue_E1": 0,
+        "good_E1": 0,
+        "issue_E2": 0,
+        "good_E2": 0,
+        "issue_E3": 0,
+        "good_E3": 0
+      },
+      "model_concern_probability": 0.8200000000000001
+    }
+  ],
+  "coverage": {
+    "complete": false,
+    "limitations": [
+      "Source context is truncated.",
+      "Some source lines are outside the analyzed context.",
+      "Only recognized APIs and local dataflow are modeled; unknown callees are not expanded."
+    ]
+  },
+  "detailStatus": "ready",
+  "assessments": [
+    {
+      "id": "distributed.all_gather:0",
+      "pack": "distributed",
+      "label": "collective_placement",
+      "category": "performance",
+      "outcome": "possible_issue",
+      "bucket": "all gather inside a loop",
+      "signal": "concern",
+      "probability": 0.82,
+      "tentative": false,
+      "probabilities": {},
+      "reference": "",
+      "contextNeeded": "shapes"
+    },
+    {
+      "id": "review.distributed-layout",
+      "pack": "distributed",
+      "label": "sharding_transitions",
+      "category": "performance",
+      "outcome": "possible_issue",
+      "bucket": "Sharding transitions · inspect execution path",
+      "signal": "concern",
+      "probability": 0.8200000000000001,
+      "tentative": false,
+      "probabilities": {},
+      "reference": "",
+      "contextNeeded": "shapes"
+    }
+  ],
+  "anchors": {
+    "distributed.all_gather:0": {
+      "startLine": 673,
+      "endLine": 673,
+      "code": "torch.distributed.all_gather_into_tensor(stacked_tensor, unsharded_tensor, group=ps.ep_group)",
+      "probability": 1
+    },
+    "review.distributed-layout": {
+      "startLine": 673,
+      "endLine": 673,
+      "code": "torch.distributed.all_gather_into_tensor(stacked_tensor, unsharded_tensor, group=ps.ep_group)",
+      "probability": 1
+    }
+  }
+}

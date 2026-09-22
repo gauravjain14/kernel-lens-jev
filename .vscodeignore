@@ -13,3 +13,4 @@ package-lock.json
 dist/*.map
 dist/host-tests.cjs
 media/preview*
+examples/multinode-accumulation/**
